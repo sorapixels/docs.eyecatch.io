@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 Welcome to Eyecatch
 =====
 
@@ -10,5 +14,5 @@ If you notice something we've missed or could be improved on,
 please help us to make this document better.
 Feel free to make a PR on [GitHub][] or send a message via [twitter][].
 
-[github]:https://github.com/sorapixels/eyecatch-documents
+[github]:https://github.com/sorapixels/docs.eyecatch.io
 [twitter]:http://twitter.com/eyecatchio

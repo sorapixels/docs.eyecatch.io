@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /caching-dependencies
+---
+
 Caching dependencies
 ====
 

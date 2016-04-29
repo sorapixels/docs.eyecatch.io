@@ -1,3 +1,9 @@
+---
+layout: default
+permalink: /configuration
+---
+
+
 Configuration
 =====
 

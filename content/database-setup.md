@@ -1,3 +1,9 @@
+---
+layout: default
+permalink: /database-setup
+---
+
+
 Database setup
 ===
 

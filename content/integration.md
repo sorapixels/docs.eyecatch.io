@@ -1,3 +1,9 @@
+---
+layout: default
+permalink: /integration
+---
+
+
 Integration
 =====
 

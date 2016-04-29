@@ -1,13 +1,21 @@
+---
+layout: default
+permalink: /about-us
+---
+
+
 About us
 =====
 
 ### Creator
+
 ##### Takao NAITO
 Developer / Designer<br>
 <naito@sorapixels.com>
 
 
 ### Notation based on the Act on Specified Commercial Transactions
+
 ##### Seller
 Sorapixels & Co.
 
@@ -20,7 +28,7 @@ Acropolis Ayase 6F<br>
 
 ##### Contact
 Tel: +81-80-9983-3967<br>
-Email: info@sorapixels.com
+Email: <info@sorapixels.com>
 
 ##### Payment Methods
 The following credit cards are accepted for payment:<br>
