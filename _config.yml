@@ -2,9 +2,3 @@ markdown: kramdown
 exclude: [vendor, Gemfile, Gemfile.lock, README.md]
 gems:
   - jekyll-sitemap
-defaults:
-  -
-    scope:
-      path: "" # empty string for all files
-    values:
-      layout: "default"
