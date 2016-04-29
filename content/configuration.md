@@ -8,13 +8,13 @@ Configuration
 
 All build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository. The `eyecatch.rb` is a simple Ruby-syntax file where you configure your web app. Eyecatch reads the configuration file each time it runs a build.
 
-### Minimal sample
+### Minimal exsample
 ```ruby
-serve 'rails server'
+serve 'ruby app.rb'
 port 3000
 ```
 
-### A bit more complex sample
+### A bit more complex exsample
 ```ruby
 before_script do
   run 'mongod --fork --logpath /var/log/mongodb.log'

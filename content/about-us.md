@@ -13,7 +13,7 @@ Japanese governmental organization named IPA (Information-Technology Promotion A
 selects projects driven by talented young programmer in software field and gives them a variety of support.
 Eyecatch and its creator is now a part of the Mitou (未踏: "No one has been entered") program.
 
-[link1](https://www.ipa.go.jp/english/humandev/third.html)
+[link1](https://www.ipa.go.jp/english/humandev/third.html),
 [link2](https://medium.com/@ukkaripon/2015-mitou-final-report-day-1-c0e8053eeb20#.pb5u8mgn1)
 
 -----
@@ -29,7 +29,6 @@ Takao Naito
 ##### Contact
 Tel: +81-80-9983-3967<br>
 Email: <info@sorapixels.com>
-
 
 ##### Office
 Acropolis Ayase 6F<br>
