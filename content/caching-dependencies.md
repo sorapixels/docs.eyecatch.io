@@ -12,6 +12,7 @@ Saved caches will be deleted permanently after a week.
 
 ## Disable caching
 You can disable automatic dependency caching by adding the line below in `eyecatch.rb`:
+
 ```
 no_cache true
 ```
