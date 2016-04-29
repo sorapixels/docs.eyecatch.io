@@ -15,11 +15,11 @@ Following databases are installed:
 - MongoDB
 - Redis
 
-## PostgreSQL
+### PostgreSQL
 PostgreSQL server can be started manually and it will listen on `127.0.0.1:5432`.
 
-## MySQL
+### MySQL
 stub
 
-## MongoDB
+### MongoDB
 MongoDB service will listen on `127.0.0.1:27017`. Use `root` user and blank password for authentication.

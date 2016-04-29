@@ -69,11 +69,32 @@ window_width [320, 1140, 1920]
 ```
 
 ### state
+Sometimes you need to create multiple user sessions. Here's an example of how you do that.
+You can interact with the web app by following links and buttons. Eyecatch has the same methods as [Capybara](http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Node/Actions) actions.
 
+```ruby
+state(:jack) {
+  before_access {
+    fill_in 'username', with: 'jack'
+    fill_in 'password', with: 'secret'
+    click_button 'Submit'
+  }
+  root_path '/login'
+}
+
+state(:jill) {
+  before_access {
+    fill_in 'username', with: 'jill'
+    fill_in 'password', with: 'birthday'
+    click_button 'Submit'
+  }
+  root_path '/login'
+}
+```
 
 ### env
 By default Eyecatch sets some general environment variables.
-You can set new one or override them with `env` option.
+You can set new one or override them with `env` option and the project's configuration page.
 
 - `USER=eyecatch`
 - `HOME=/home/eyecatch`
@@ -82,7 +103,3 @@ You can set new one or override them with `env` option.
 - `DEBIAN_FRONTEND=noninteractive`
 - `RAILS_ENV=test`
 - `RACK_ENV=test`
-
-
-### route
-You can interact with the web app by following links and buttons. Eyecatch has the same methods as [Capybara](http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Node/Actions) actions.

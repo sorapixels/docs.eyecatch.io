@@ -13,7 +13,7 @@ Each build is executed the virtual machine is given a max of 2GB memory and 30-m
 
 Build environment runs under the `root` user and you can run almost any commands to build the project. Thus, you can install custom packages that are not included in the default environment, start services manually, bind a port or edit system files. However, even with the root permission, there are still a few constraints to what you can do inside the environment. For example, you will not be able to mount or unmount file systems, install linux kernel modules or modify the routing table.
 
-## Languages
+### Languages
 Eyecatch includes following languages:
 
 - Ruby
