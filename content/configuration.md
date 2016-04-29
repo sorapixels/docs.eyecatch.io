@@ -7,7 +7,7 @@ permalink: /configuration
 Configuration
 =====
 
-All build configuration must be set on the file `eyecatch.rb` that located in the root path of your project repository. The `eyecatch.rb` is a simple Ruby-syntax file where you describe any commands that required for your web app. Eyecatch reads the configuration file each time it runs a build.
+All build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository. The `eyecatch.rb` is a simple Ruby-syntax file where you configure your web app. Eyecatch reads the configuration file each time it runs a build.
 
 ### Sample configuration file
 ```ruby
@@ -29,8 +29,10 @@ env 'MONGODB_DATABASE=test'
 ```
 
 ### serve, port
-**Required** : Web app must be run with a single command.
+**Required** : Web app must be run with a single command, running in the foreground.
+
 After that Eyecatch will start crawling from localhost with specified port number.
+
 ```ruby
 serve 'rails server'
 port 3000
@@ -39,11 +41,12 @@ port 3000
 ### before_script, after_script
 You can specify bash commands to be executed before/after the build.
 You can pass as many commands as you want. Commands must be wrapped with Ruby-style block.
-Commends defined in `before_script` must return exit code 0, otherwise the build process will fail and
+Commands defined in `before_script` must return exit code 0, otherwise the build process will fail and
 other commands will not be executed.
+
 ```ruby
 before_script {
-  run 'bundle install --verbose'
+  run 'bundle install --verbose --deployment --path vendor/bundle'
 
   run 'rake db:create'
   run 'rake db:migrate'

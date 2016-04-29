@@ -14,4 +14,4 @@ Eyecatch supports some notification methods via webhooks.
 - Email
 
 If you prefer to use other third-party service or application,
-please contact [support](mailto:info@sorapixels.com).
+please contact [support](mailto:support@sorapixels.com).

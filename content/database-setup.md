@@ -7,8 +7,9 @@ permalink: /database-setup
 Database setup
 ===
 
-Eyecatch build environment has some database applications which can be started manually.
+Eyecatch build environment has some database servers which can be started manually.
 Following databases are installed:
+
 - PostgreSQL
 - MySQL
 - MongoDB
