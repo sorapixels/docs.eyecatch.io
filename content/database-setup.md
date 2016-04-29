@@ -3,7 +3,6 @@ layout: default
 permalink: /database-setup
 ---
 
-
 Database setup
 ===
 
@@ -17,9 +16,32 @@ Following databases are installed:
 
 ### PostgreSQL
 PostgreSQL server can be started manually and it will listen on `127.0.0.1:5432`.
+There is a user `postgres` with blank password for authentication.
+
+```bash
+$ /etc/init.d/postgresql start
+$ psql -c 'create database awesomedb;' -U postgres
+```
 
 ### MySQL
-stub
+MySQL server can be started manually and it will listen on `127.0.0.1:3306`.
+
+```bash
+$ /etc/init.d/mysql start
+$ mysql -u root -e 'create database awesomedb;'
+```
 
 ### MongoDB
-MongoDB service will listen on `127.0.0.1:27017`. Use `root` user and blank password for authentication.
+MongoDB server will listen on `127.0.0.1:27017`.
+
+```bash
+$ /etc/init.d/mongodb start
+```
+
+
+### Redis
+Redis server will listen on `127.0.0.1:6379`.
+
+```bash
+$ /etc/init.d/redis-server start
+```

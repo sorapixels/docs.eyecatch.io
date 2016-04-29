@@ -26,7 +26,7 @@ The following credit cards are accepted for payment:<br>
 VISA, Master, JCB, American Express, Diners
 
 #### Pricing
-Please refer to our pricing page. ([link](https://eyecatch.io/pricing))
+Please refer to our pricing page.
 
 #### Cancellation / Refund
 Refund will be processed by cancelling a credit card transaction.

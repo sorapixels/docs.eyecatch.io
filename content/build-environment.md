@@ -3,7 +3,6 @@ layout: default
 permalink: /build-environment
 ---
 
-
 Build environment
 =====
 

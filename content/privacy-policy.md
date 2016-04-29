@@ -3,7 +3,6 @@ layout: default
 permalink: /privacy-policy
 ---
 
-
 Privacy policy
 =====
 

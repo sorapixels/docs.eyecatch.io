@@ -21,7 +21,7 @@ We have multiple ways to get in touch with us.
 <support@sorapixels.com>
 
 ##### Security inquiries
-<support@sorapixels.com>
+<security@sorapixels.com>
 
 ##### Job inquiries
 <jobs@sorapixels.com>

@@ -3,21 +3,34 @@ layout: default
 permalink: /configuration
 ---
 
-
 Configuration
 =====
 
 All build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository. The `eyecatch.rb` is a simple Ruby-syntax file where you configure your web app. Eyecatch reads the configuration file each time it runs a build.
 
-### Sample configuration file
+### Minimal sample
+```ruby
+serve 'rails server'
+port 3000
+```
+
+### A bit more complex sample
 ```ruby
 before_script do
   run 'mongod --fork --logpath /var/log/mongodb.log'
   run 'npm install'
   run 'npm install -g webpack'
-  run 'ndenv rehash'
   run 'webpack -p --quiet'
 end
+
+state(:admin) {
+  before_access {
+    fill_in 'username', with: 'jill'
+    fill_in 'password', with: 'birthday'
+    click_button 'Submit'
+  }
+  root_path '/login'
+}
 
 window_width 1200
 
@@ -30,7 +43,6 @@ env 'MONGODB_DATABASE=test'
 
 ### serve, port
 **Required** : Web app must be run with a single command, running in the foreground.
-
 After that Eyecatch will start crawling from localhost with specified port number.
 
 ```ruby
@@ -61,9 +73,7 @@ You can override the value with the configuration file.
 ```ruby
 # just one size
 window_width 1024
-```
 
-```ruby
 # You can also set multiple window size
 window_width [320, 1140, 1920]
 ```
