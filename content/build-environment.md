@@ -17,11 +17,11 @@ Eyecatch includes following languages:
 
 - Ruby
 
-  Ruby version are managed with `rvm`. Version 2.3.0p0 is pre-installed.
+  Ruby version are managed with `ruby-switch`. Version 2.1, 2.2, 2.3 are pre-installed and the default version is 2.3.0.
 
 - Node.js
 
-  Node.js versions are managed with `nvm`. Version 4.4.3 is pre-installed.
+  Node.js versions are managed with `ndenv`. Version 4.4.3 is pre-installed.
 
 - Go
 
