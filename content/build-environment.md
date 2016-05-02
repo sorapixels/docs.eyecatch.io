@@ -6,7 +6,7 @@ permalink: /build-environment
 Build environment
 =====
 
-Each projects will be executed in an isolated environment in Eyecatch. Every time a new build is invoked, Eyecatch build worker creates a fresh container from a pre-built image which contains web application build programs. The image is built on 64-bit Ubuntu 14.04 LTS.
+Each projects will be executed in an isolated environment in Eyecatch. Every time a new build is invoked, Eyecatch build worker creates a fresh container from a pre-built image which contains web application build programs. The image is built on 64-bit Ubuntu latest LTS.
 
 Each build is executed the virtual machine is given a max of 2GB memory and 30-minutes execution time limit. When the time limit is exceeded or the build is completed, the build environment will be terminated and removed. There is no persistence except dependency directory cache which is stored up to a month. You can disable this feature in the configuration file `eyecatch.rb`. Once you disabled the dependency caching, the stored data will be erased and it cannot be undone.
 
