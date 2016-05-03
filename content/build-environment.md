@@ -30,7 +30,6 @@ Eyecatch includes following languages:
 
   Node.js versions are managed with `ndenv`. Default version is 4.4.3.
 
-  - v4.0.0
   - v4.1.2
   - **v4.2.6**
   - v4.3.0
@@ -44,6 +43,23 @@ Eyecatch includes following languages:
   - v5.7.0
 
 
+- Python
+
+  Python versions are managed with `pyenv`. Default version is 2.7.11.
+
+  - 2.7.10
+  - **2.7.11**
+  - 3.1.5
+  - 3.2.5
+  - 3.2.6
+  - 3.3.5
+  - 3.3.6
+  - 3.4.3
+  - 3.4.4
+  - 3.5.0
+  - 3.5.1
+
+
 - PHP
 
   PHP versions are managed with `phpenv`. Default version is 5.6.17.
@@ -54,21 +70,3 @@ Eyecatch includes following languages:
   - 5.6.18
   - 7.0.2
   - 7.0.3
-
-
-- Python
-
-  Python versions are managed with `pyenv`. Default version is 2.7.11.
-
-  - 2.7.10
-  - **2.7.11**
-  - 3.1.4
-  - 3.1.5
-  - 3.2.5
-  - 3.2.6
-  - 3.3.5
-  - 3.3.6
-  - 3.4.3
-  - 3.4.4
-  - 3.5.0
-  - 3.5.1
