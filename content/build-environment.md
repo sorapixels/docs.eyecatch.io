@@ -6,31 +6,69 @@ permalink: /build-environment
 Build environment
 =====
 
-Each projects will be executed in an isolated environment in Eyecatch. Every time a new build is invoked, Eyecatch build worker creates a fresh container from a pre-built image which contains web application build programs. The image is built on 64-bit Ubuntu latest LTS.
+Each projects will be executed in an isolated environment in Eyecatch. Every time a new build is invoked, Eyecatch build worker creates a fresh container from a pre-built image which contains web application build programs. The image is built on 64-bit Ubuntu latest LTS (16.04 Xenial).
 
-Each build is executed the virtual machine is given a max of 2GB memory and 30-minutes execution time limit. When the time limit is exceeded or the build is completed, the build environment will be terminated and removed. There is no persistence except dependency directory cache which is stored up to a month. You can disable this feature in the configuration file `eyecatch.rb`. Once you disabled the dependency caching, the stored data will be erased and it cannot be undone.
+Each build is executed the virtual machine is given a max of 2GB memory and 120-minutes execution time limit. When the time limit is exceeded or the build is completed, the build environment will be terminated and removed.
 
-Build environment runs under the `root` user and you can run almost any commands to build the project. Thus, you can install custom packages that are not included in the default environment, start services manually, bind a port or edit system files. However, even with the root permission, there are still a few constraints to what you can do inside the environment. For example, you will not be able to mount or unmount file systems, install linux kernel modules or modify the routing table.
+Build environment runs under the `eyecatch` user and you can run almost any commands to build the project. Thus, you can install custom packages that are not included in the default environment, start services manually, bind a port or edit system files. However, even with the root permission, there are still a few constraints to what you can do inside the environment. For example, you will not be able to mount or unmount file systems, install linux kernel modules or modify the routing table.
 
 ### Languages
 Eyecatch includes following languages:
 
 - Ruby
 
-  Ruby version are managed with `ruby-switch`. Version 2.1, 2.2, 2.3 are pre-installed and the default version is 2.3.0.
+  Ruby version are managed with `rbenv`. Default version is 2.2.4.
+
+  -  2.1.7
+  -  2.1.8
+  -  2.2.3
+  -  **2.2.4**
+  -  2.3.0
+
 
 - Node.js
 
-  Node.js versions are managed with `ndenv`. Version 4.4.3 is pre-installed.
+  Node.js versions are managed with `ndenv`. Default version is 4.4.3.
 
-- Go
+  - v4.0.0
+  - v4.1.2
+  - **v4.2.6**
+  - v4.3.0
+  - v5.0.0
+  - v5.1.1
+  - v5.2.0
+  - v5.3.0
+  - v5.4.1
+  - v5.5.0
+  - v5.6.0
+  - v5.7.0
 
-  Currently only one Golang version is installed. The version is 1.2.1.
 
 - PHP
 
-  Currently only one PHP version is installed.  The version is 5.5.9.
+  PHP versions are managed with `phpenv`. Default version is 5.6.17.
+
+  - 5.5.31
+  - 5.5.32
+  - **5.6.17**
+  - 5.6.18
+  - 7.0.2
+  - 7.0.3
+
 
 - Python
 
-  Currently only one Python version is installed. The version is 2.7.6.
+  Python versions are managed with `pyenv`. Default version is 2.7.11.
+
+  - 2.7.10
+  - **2.7.11**
+  - 3.1.4
+  - 3.1.5
+  - 3.2.5
+  - 3.2.6
+  - 3.3.5
+  - 3.3.6
+  - 3.4.3
+  - 3.4.4
+  - 3.5.0
+  - 3.5.1
