@@ -16,7 +16,8 @@ Following databases are installed:
 
 ### PostgreSQL
 PostgreSQL server can be started manually and it will listen on `127.0.0.1:5432`.
-There is a user `postgres` with blank password for authentication.
+There is a user `postgres` and `root` with blank password for authentication.
+You can create a new user anytime.
 
 ```bash
 $ /etc/init.d/postgresql start
