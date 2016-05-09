@@ -102,6 +102,14 @@ state(:jill) {
 }
 ```
 
+### start_delay
+If the server process needs a moment before capturing, it might be worth adding a `start_delay` to prevent problems.
+
+```ruby
+start_delay 10 # waits 10 seconds before page capturing
+```
+
+
 ### env
 By default Eyecatch sets some general environment variables.
 You can set new one or override them with `env` option and the project's configuration page.
