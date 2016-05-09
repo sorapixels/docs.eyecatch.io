@@ -10,7 +10,7 @@ Each projects will be executed in an isolated environment in Eyecatch. Every tim
 
 Each build is executed the virtual machine is given a max of 2GB memory and 120-minutes execution time limit. When the time limit is exceeded or the build is completed, the build environment will be terminated and removed.
 
-Build environment runs under the `eyecatch` user and you can run almost any commands to build the project. Thus, you can install custom packages that are not included in the default environment, start services manually, bind a port or edit system files. However, even with the root permission, there are still a few constraints to what you can do inside the environment. For example, you will not be able to mount or unmount file systems, install linux kernel modules or modify the routing table.
+Build environment runs under the `root` user and you can run almost any commands to build the project. Thus, you can install custom packages that are not included in the default environment, start services manually, bind a port or edit system files. However, even with the root permission, there are still a few constraints to what you can do inside the environment. For example, you will not be able to mount or unmount file systems, install linux kernel modules or modify the routing table.
 
 ### Languages
 Eyecatch includes following languages:
@@ -36,6 +36,8 @@ Eyecatch includes following languages:
   - v5.6.0
   - v5.7.0
   - v6.0.0
+
+  If you want to use npm packages as a command line tool, something like bower or grunt CLI, then you need to install it globally with `-g` option and run `ndenv rehash` after install.
 
 
 - Python
