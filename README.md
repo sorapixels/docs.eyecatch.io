@@ -1,4 +1,4 @@
 Eyecatch Documents
 =====
 
-[EyecatchDocs](https://docs.eyecatch.io)
+<https://docs.eyecatch.io>
