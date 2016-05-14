@@ -8,6 +8,8 @@ Configuration
 
 All build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository. The `eyecatch.rb` is a simple Ruby-syntax file where you configure your web app. Eyecatch reads the configuration file each time it runs a build.
 
+## Examples
+
 ### Minimal example
 ```ruby
 serve 'ruby app.rb'
@@ -40,6 +42,8 @@ port 1337
 env 'MONGODB_HOST=localhost'
 env 'MONGODB_DATABASE=test'
 ```
+
+## Directives
 
 ### serve, port
 **Required** : Web app must be run with a single command, running in the foreground.
@@ -131,3 +135,11 @@ You can set new one or override them with `env` option and the project's configu
 - `DEBIAN_FRONTEND=noninteractive`
 - `RAILS_ENV=test`
 - `RACK_ENV=test`
+
+
+## Encoding
+If `eyecatch.rb` contains non-ASCII characters, you must put Ruby's magic comment on top of the file.
+
+```ruby
+# encoding: utf-8
+```
