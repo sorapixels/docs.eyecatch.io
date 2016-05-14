@@ -8,13 +8,13 @@ Configuration
 
 All build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository. The `eyecatch.rb` is a simple Ruby-syntax file where you configure your web app. Eyecatch reads the configuration file each time it runs a build.
 
-### Minimal exsample
+### Minimal example
 ```ruby
 serve 'ruby app.rb'
 port 3000
 ```
 
-### A bit more complex exsample
+### A bit more complex example
 ```ruby
 before_script do
   run 'mongod --fork --logpath /var/log/mongodb.log'
@@ -64,6 +64,16 @@ before_script {
   run 'rake db:migrate'
   run 'rake db:populate'
 }
+```
+
+### include_paths, exclude_paths
+If there are unlinked pages, something like admin page, they cannot be accessible
+with automatic crawling. So you need to specify them explicitly.
+Conversely, if you need to exclude some pages from capturing target, use `exclude_paths` for that purpose.
+
+```ruby
+include_paths ['/admin', '/orphan']
+exclude_paths ['/dont-access-me']
 ```
 
 ### window_width
