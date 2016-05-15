@@ -116,11 +116,13 @@ state(:jill) {
 }
 ```
 
-### start_delay
+### start_delay, capture_delay
 If the server process needs a moment before capturing, it might be worth adding a `start_delay` to prevent problems.
+There is `capture_delay` option as well and it is useful for the pages which contain large images or something like that.
 
 ```ruby
-start_delay 10 # waits 10 seconds before page capturing
+start_delay 10  # waits 10 seconds before page capturing
+capture_delay 5 # waits 5 seconds after accessing each pages
 ```
 
 
@@ -135,11 +137,3 @@ You can set new one or override them with `env` option and the project's configu
 - `DEBIAN_FRONTEND=noninteractive`
 - `RAILS_ENV=test`
 - `RACK_ENV=test`
-
-
-## Encoding
-If `eyecatch.rb` contains non-ASCII characters, you must put Ruby's magic comment on top of the file.
-
-```ruby
-# encoding: utf-8
-```
