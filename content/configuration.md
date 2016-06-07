@@ -22,6 +22,7 @@ before_script do
   run 'mongod --fork --logpath /var/log/mongodb.log'
   run 'npm install'
   run 'npm install -g webpack'
+  run 'ndenv rehash'
   run 'webpack -p --quiet'
 end
 
@@ -31,7 +32,7 @@ state(:admin) {
     fill_in 'password', with: 'birthday'
     click_button 'Submit'
   }
-  root_path '/login'
+  entry_point '/login'
 }
 
 window_width 1200
@@ -70,13 +71,14 @@ before_script {
 }
 ```
 
-### include_paths, exclude_paths
+### entry_point, exclude_paths
 If there are unlinked pages, something like admin page, they cannot be accessible
-with automatic crawling. So you need to specify them explicitly.
+with automatic crawling. So you need to specify them explicitly. Crawling program will start from
+each `entry_point`.
 Conversely, if you need to exclude some pages from capturing target, use `exclude_paths` for that purpose.
 
 ```ruby
-include_paths ['/admin', '/orphan']
+entry_point ['/admin', '/orphan']
 exclude_paths ['/dont-access-me']
 ```
 
@@ -103,7 +105,7 @@ state(:jack) {
     fill_in 'password', with: 'secret'
     click_button 'Submit'
   }
-  root_path '/login'
+  entry_point '/login'
 }
 
 state(:jill) {
@@ -112,7 +114,7 @@ state(:jill) {
     fill_in 'password', with: 'birthday'
     click_button 'Submit'
   }
-  root_path '/login'
+  entry_point '/login'
 }
 ```
 
