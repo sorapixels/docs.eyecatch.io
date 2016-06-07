@@ -1,0 +1,14 @@
+---
+layout: default
+permalink: /faq
+---
+
+Frequently Asked Questions
+=====
+
+### Do you support BitBucket or GitLab?
+Currently we only support GitHub for building and authentication. Sorry about that.
+
+### Command not found after `npm install -g ***`
+Try `ndenv rehash` after global installing. It will recreate symbolic links
+to make npm packages accessble.
