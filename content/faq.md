@@ -14,24 +14,11 @@ Try `ndenv rehash` after global installing. It will recreate symbolic links
 to make npm packages accessble.
 
 ### How do I use Eyecatch with static html files?
-You just need to serve those files with Rack or similar app.
-Here's an example using Rack, put those files in your repository root.
+You just need to serve those files via HTTP.
+Here's an example using Python's built-in server:
 
-#### eyecatch.rb
+##### eyecatch.rb
 ```ruby
-before_script do
-  run 'gem install rack'
-end
-
-serve 'rackup'
-port 9292
-```
-
-#### config.ru
-```ruby
-use Rack::Static,
-  urls: Dir.glob('./*').map { |s| s.gsub(/./, '')},
-  index: 'index.html'
-
-run proc{ |env| [ 404, { 'Content-Type': 'text/html' }, ['404'] ] }
+serve 'python -m http.server 8000'
+port 8000
 ```
