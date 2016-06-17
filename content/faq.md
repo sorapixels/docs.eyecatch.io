@@ -15,10 +15,20 @@ to make npm packages accessble.
 
 ### How do I use Eyecatch with static html files?
 You just need to serve those files via HTTP.
-Here's an example using Python's built-in server:
+Here's some examples using Python, Ruby and PHP built-in server:
 
 ##### eyecatch.rb
 ```ruby
 serve 'python -m http.server 8000'
+port 8000
+```
+
+```ruby
+serve 'ruby -run -e httpd ./ -p 8000'
+port 8000
+```
+
+```ruby
+serve 'php -S localhost:8000'
 port 8000
 ```

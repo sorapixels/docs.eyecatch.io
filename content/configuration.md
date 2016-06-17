@@ -27,7 +27,7 @@ before_script do
 end
 
 state(:admin) {
-  before_access {
+  before_access ('/login') {
     fill_in 'username', with: 'jill'
     fill_in 'password', with: 'birthday'
     click_button 'Submit'
@@ -100,7 +100,7 @@ You can interact with the web app by following links and buttons. Eyecatch has t
 
 ```ruby
 state(:jack) {
-  before_access {
+  before_access ('/login') {
     fill_in 'username', with: 'jack'
     fill_in 'password', with: 'secret'
     click_button 'Submit'
@@ -109,7 +109,7 @@ state(:jack) {
 }
 
 state(:jill) {
-  before_access {
+  before_access ('/login') {
     fill_in 'username', with: 'jill'
     fill_in 'password', with: 'birthday'
     click_button 'Submit'
