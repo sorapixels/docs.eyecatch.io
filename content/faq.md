@@ -17,7 +17,7 @@ to make npm packages accessble.
 You just need to serve those files via HTTP.
 Here's some examples using Python, Ruby and PHP built-in server:
 
-##### eyecatch.rb
+#### eyecatch.rb
 ```ruby
 serve 'python -m http.server 8000'
 port 8000
