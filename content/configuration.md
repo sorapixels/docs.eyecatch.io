@@ -71,11 +71,10 @@ env 'MONGODB_DATABASE=test'
 * [env](#env)
 * [before_build](#beforebuild)
   * [run](#run)
-* [before_capture](#beforecapture)
 * [task](#task)
   * [entry_point](#entrypoint)
   * [exclude_paths](#excludepaths)
-  * [before_capture](#beforecapture-1)
+  * [before_capture](#beforecapture)
 
 ### `serve`
 
@@ -243,29 +242,6 @@ before_build {
 }
 ```
 
-### `before_capture`
-
-* Arguments: [`String`, `block`]
-* Multiple: yes
-
-Execute the given code when accessing the given path before capturing the screenshot.  
-The given block will be executed inside a [`Capybara::Session`][capybara_session],
-so you can use any of the methods it defines.
-
-#### Example
-
-```ruby
-before_capture('/login') {
-  fill_in 'username', with: 'jill'
-  fill_in 'password', with: 'birthday'
-  click_button 'Submit'
-}
-```
-
-NOTE: The above example will change page before capturing the screenshot.
-The screenshot will therefore be captured on the target page of the form
-and not the login page.
-
 ### `task`
 
 * Arguments: [`String` \| `Symbol`, `block`]
@@ -299,8 +275,9 @@ A list of paths to be excluded from the crawling.
 * Arguments: [`String`, `block`]
 * Multiple: yes
 
-Same as top level [`before_capture`](#beforecapture) but will only be
-executed for the current task.
+Execute the given code when accessing the given path before capturing the screenshot.  
+The given block will be executed inside a [`Capybara::Session`][capybara_session],
+so you can use any of the methods it defines.
 </div>
 
 #### Example
@@ -320,5 +297,10 @@ task(:admin) {
   exclude_paths ['/about']
 }
 ```
+
+NOTE: The above example will change page before capturing the screenshot.
+The screenshot will therefore be captured on the target page of the form
+and not the `/login` page.
+
 
 [capybara_session]: http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Session
