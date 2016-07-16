@@ -15,32 +15,45 @@ Following databases are installed:
 - Redis
 
 ### PostgreSQL
-PostgreSQL server can be started manually and it will listen on `127.0.0.1:5432`. There is a user `postgres` and `root` with blank password for authentication. You can create a new user anytime.
 
-```bash
-$ /etc/init.d/postgresql start
-$ psql -c 'create database awesomedb;' -U postgres
+To use PostgreSQL, add the following to your configuration.
+
+```ruby
+service 'postgresql'
 ```
+
+PostgreSQL server will listen on `127.0.0.1:5432`.  
+The users `postgres` and `root` with blank password can be used for authentication.  
+
 
 ### MySQL
-MySQL server can be started manually and it will listen on `127.0.0.1:3306`.
 
-```bash
-$ /etc/init.d/mysql start
-$ mysql -u root -e 'create database awesomedb;'
+To use MySQL, add the following to your configuration.
+
+```ruby
+service 'mysql'
 ```
+
+MySQL server will listen on `127.0.0.1:3306`.  
+The user `root` with blank password can be used for authentication.
 
 ### MongoDB
-MongoDB server will listen on `127.0.0.1:27017`.
 
-```bash
-$ /etc/init.d/mongodb start
+To use MongoDB, add the following to your configuration.
+
+```ruby
+service 'mongodb'
 ```
 
+MongoDB server will listen on `127.0.0.1:27017` and can be accessed
+without authentication.
 
 ### Redis
-Redis server will listen on `127.0.0.1:6379`.
 
-```bash
-$ /etc/init.d/redis-server start
+To use Redis, add the following to your configuration.
+
+```ruby
+service 'redis'
 ```
+
+Redis server will listen on `127.0.0.1:6379` and can be accessed without password.
