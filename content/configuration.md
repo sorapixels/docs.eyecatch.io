@@ -3,31 +3,45 @@ layout: default
 permalink: /configuration
 ---
 
+{::options parse_block_html="true" /}
+
 Configuration
 =====
 
-All build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository. The `eyecatch.rb` is a simple Ruby-syntax file where you configure your web app. Eyecatch reads the configuration file each time it runs a build.
+The build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository.  
+`eyecatch.rb` is a simple Ruby file where you configure your web application.  
+Eyecatch reads the configuration file each time it runs a build.
 
 ## Examples
 
 ### Minimal example
+
 ```ruby
 serve 'ruby app.rb'
 port 3000
 ```
 
-### A bit more complex example
+### Real world example
+
 ```ruby
-before_script do
+serve 'node app.js'
+port 1337
+
+service 'mongodb'
+service 'redis'
+
+window_width 1200
+
+before_build {
   run 'mongod --fork --logpath /var/log/mongodb.log'
   run 'npm install'
   run 'npm install -g webpack'
   run 'ndenv rehash'
   run 'webpack -p --quiet'
-end
+}
 
-state(:admin) {
-  before_access ('/login') {
+task(:admin) {
+  before_capture('/login') {
     fill_in 'username', with: 'jill'
     fill_in 'password', with: 'birthday'
     click_button 'Submit'
@@ -35,107 +49,258 @@ state(:admin) {
   entry_point '/login'
 }
 
-window_width 1200
-
-serve 'NODE_ENV=test node app.js'
-port 1337
-
+env 'NODE_ENV=test'
 env 'MONGODB_HOST=localhost'
 env 'MONGODB_DATABASE=test'
 ```
 
-## Directives
+## API documentation
 
-### serve, port
-**Required** : Web app must be run with a single command, running in the foreground.
-After that Eyecatch will start crawling from localhost with specified port number.
+### Required
+
+* [serve](#serve)
+* [port](#port)
+
+### Optional
+
+* [no_cache](#nocache)
+* [start_delay](#startdelay)
+* [capture_delay](#capturedelay)
+* [window_width](#windowwidth)
+* [service](#service)
+* [env](#env)
+* [before_build](#beforebuild)
+  * [run](#run)
+* [task](#task)
+  * [entry_point](#entrypoint)
+  * [exclude_paths](#excludepaths)
+  * [before_capture](#beforecapture)
+
+### `serve`
+
+* Required: yes
+* Argument: `String`
+
+The command to run the application HTTP server.  
+The command must run in the foreground,
+and the server should listen on localhost.
+
+#### Example
 
 ```ruby
-serve 'rails server'
+serve 'bundle exec rails server'
+```
+
+### `port`
+
+* Required: yes
+* Argument: `Integer`
+
+The port on which the application HTTP server is listening.
+
+#### Example
+
+```ruby
 port 3000
 ```
 
-### before_script, after_script
-You can specify bash commands to be executed before/after the build.
-You can pass as many commands as you want. Commands must be wrapped with Ruby-style block.
-Commands defined in `before_script` must return exit code 0, otherwise the build process will fail and
-other commands will not be executed.
+### `no_cache`
+
+* Argument: `Boolean`
+* Default: `false`
+
+Disable the CI server cache.
+
+#### Example
 
 ```ruby
-before_script {
-  run 'bundle install --verbose --deployment --path vendor/bundle'
+no_cache true
+```
 
-  run 'rake db:create'
-  run 'rake db:migrate'
-  run 'rake db:populate'
+### `start_delay`
+
+* Argument: `Integer`
+* Default: `0`
+
+The time to wait after starting the server in seconds.  
+Set the value according to the time your HTTP server needs to boot.
+
+#### Example
+
+```ruby
+start_delay 3
+```
+
+### `capture_delay`
+
+* Argument: `Integer`
+* Default: `3`
+
+The time to wait when visiting the page before capturing the screenshot.  
+This value can be increased if image or other resources are not loaded fast enough.
+
+#### Example
+
+```ruby
+capture_delay 5
+```
+
+### `window_width`
+
+* Argument: `Integer` \| `Array<Integer>`
+* Default: `1140`
+
+The window width used to capture screenshots.  
+If an array is passed, the tasks will be executed with all given widths.
+
+#### Example
+
+```ruby
+window_width [768, 1280, 1920]
+```
+
+### `service`
+
+* Argument: `String`
+* Multiple: yes
+
+Define a service to be started when before the build is launched.  
+The service will be started before running [before_build](#beforebuild).
+
+#### Example
+
+```ruby
+service 'postgresql'
+service 'redis'
+```
+
+#### Available services
+
+The following services are currently available:
+
+* `postgresql`
+* `mysql`
+* `mongodb`
+* `redis`
+
+Check the [Database setup](/database-setup) documentation for more information.
+
+### `env`
+
+* Argument: `String` - should be of the form `key=value`
+* Multiple: yes
+
+Set an environment variable. The environment variable will be available during the build.
+
+#### Example
+
+```ruby
+env 'RAILS_ENV=test'
+env 'DATABASE_URL=postgres://postgres@localhost/app_test'
+```
+
+#### Default environment variables
+
+* `USER=eyecatch`
+* `HOME=/home/eyecatch`
+* `CI=TRUE`
+* `EYECATCH=TRUE`
+* `DEBIAN_FRONTEND=noninteractive`
+* `RAILS_ENV=test`
+* `RACK_ENV=test`
+
+### `before_build`
+
+* Argument: `block`
+
+Execute the given block before starting the build.  
+This can be used to install dependencies, populate the database,
+or configuration the application.
+
+The following methods are available inside the `before_build` block.
+
+
+<div class="nested-doc">
+
+#### `run`
+
+* Argument: `String`
+* Multiple: yes
+
+Run the given command as a superuser.
+
+</div>
+
+#### Example
+
+```ruby
+before_build {
+  run 'bundle install'
+  run 'bundle rake db:create'
+  run 'bundle rake db:migrate'
+  run 'bundle rake db:populate'
 }
 ```
 
-### entry_point, exclude_paths
-If there are unlinked pages, something like admin page, they cannot be accessible
-with automatic crawling. So you need to specify them explicitly. Crawling program will start from
-each `entry_point`.
-Conversely, if you need to exclude some pages from capturing target, use `exclude_paths` for that purpose.
+### `task`
+
+* Arguments: [`String` \| `Symbol`, `block`]
+* Multiple: yes
+
+Define a task, which maps to a browser session and crawls
+the pages starting from the given endpoints.
+
+NOTE: If no task is defined, a default task will be executed,
+and start crawling at `/`. If a task is defined, the default
+task is not used.
+
+The following methods can be used inside the `task` block.
+
+<div class="nested-doc">
+
+#### `entry_point`
+
+* Argument: `String` \| `Array<String>`
+
+The entry point from which the crawling should start.
+
+#### `exclude_paths`
+
+* Argument: `Array<String>`
+
+A list of paths to be excluded from the crawling.
+
+#### `before_capture`
+
+* Arguments: [`String`, `block`]
+* Multiple: yes
+
+Execute the given code when accessing the given path before capturing the screenshot.  
+The given block will be executed inside a [`Capybara::Session`][capybara_session],
+so you can use any of the methods it defines.
+</div>
+
+#### Example
 
 ```ruby
-entry_point ['/admin', '/orphan']
-exclude_paths ['/dont-access-me']
-```
+task(:anonymous) {
+  entry_point ['/', '/about']
+}
 
-### window_width
-Eyecatch will render the image with 1140px width by default.
-You can override the value with the configuration file.
-
-```ruby
-# just one size
-window_width 1024
-
-# You can also set multiple window size
-window_width [320, 1140, 1920]
-```
-
-### state
-Sometimes you need to create multiple user sessions. Here's an example of how you do that.
-You can interact with the web app by following links and buttons. Eyecatch has the same methods as [Capybara](http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Node/Actions) actions.
-
-```ruby
-state(:jack) {
-  before_access ('/login') {
-    fill_in 'username', with: 'jack'
-    fill_in 'password', with: 'secret'
-    click_button 'Submit'
-  }
+task(:admin) {
   entry_point '/login'
-}
-
-state(:jill) {
-  before_access ('/login') {
+  before_capture('/login') {
     fill_in 'username', with: 'jill'
     fill_in 'password', with: 'birthday'
     click_button 'Submit'
   }
-  entry_point '/login'
+  exclude_paths ['/about']
 }
 ```
 
-### start_delay, capture_delay
-If the server process needs a moment before capturing, it might be worth adding a `start_delay` to prevent problems.
-There is `capture_delay` option as well and it is useful for the pages which contain large images or something like that.
-
-```ruby
-start_delay 10  # waits 10 seconds before page capturing
-capture_delay 5 # waits 5 seconds after accessing each pages
-```
+NOTE: The above example will change page before capturing the screenshot.
+The screenshot will therefore be captured on the target page of the form
+and not the `/login` page.
 
 
-### env
-By default Eyecatch sets some general environment variables.
-You can set new one or override them with `env` option and the project's configuration page.
-
-- `USER=eyecatch`
-- `HOME=/home/eyecatch`
-- `CI=TRUE`
-- `EYECATCH=TRUE`
-- `DEBIAN_FRONTEND=noninteractive`
-- `RAILS_ENV=test`
-- `RACK_ENV=test`
+[capybara_session]: http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Session
