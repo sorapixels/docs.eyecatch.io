@@ -1,4 +1,4 @@
-before_script {
+before_build {
   run 'bundle install --path vendor/bundle'
 }
 
