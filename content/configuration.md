@@ -8,8 +8,8 @@ permalink: /configuration
 Configuration
 =====
 
-The build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository.  
-`eyecatch.rb` is a simple Ruby file where you configure your web application.  
+The build configuration must be set in the file `eyecatch.rb` located at the root path of your project repository.
+`eyecatch.rb` is a simple Ruby file where you configure your web application.
 Eyecatch reads the configuration file each time it runs a build.
 
 ## Examples
@@ -81,7 +81,7 @@ env 'MONGODB_DATABASE=test'
 * Required: yes
 * Argument: `String`
 
-The command to run the application HTTP server.  
+The command to run the application HTTP server.
 The command must run in the foreground,
 and the server should listen on localhost.
 
@@ -122,7 +122,7 @@ no_cache true
 * Argument: `Integer`
 * Default: `0`
 
-The time to wait after starting the server in seconds.  
+The time to wait after starting the server in seconds.
 Set the value according to the time your HTTP server needs to boot.
 
 #### Example
@@ -136,7 +136,7 @@ start_delay 3
 * Argument: `Integer`
 * Default: `3`
 
-The time to wait when visiting the page before capturing the screenshot.  
+The time to wait when visiting the page before capturing the screenshot.
 This value can be increased if image or other resources are not loaded fast enough.
 
 #### Example
@@ -150,7 +150,7 @@ capture_delay 5
 * Argument: `Integer` \| `Array<Integer>`
 * Default: `1140`
 
-The window width used to capture screenshots.  
+The window width used to capture screenshots.
 If an array is passed, the tasks will be executed with all given widths.
 
 #### Example
@@ -164,7 +164,7 @@ window_width [768, 1280, 1920]
 * Argument: `String`
 * Multiple: yes
 
-Define a service to be started when before the build is launched.  
+Define a service to be started when before the build is launched.
 The service will be started before running [before_build](#beforebuild).
 
 #### Example
@@ -213,7 +213,7 @@ env 'DATABASE_URL=postgres://postgres@localhost/app_test'
 
 * Argument: `block`
 
-Execute the given block before starting the build.  
+Execute the given block before starting the build.
 This can be used to install dependencies, populate the database,
 or configuration the application.
 
@@ -266,7 +266,7 @@ The entry point from which the crawling should start.
 
 #### `exclude_paths`
 
-* Argument: `Array<String>`
+* Argument: `Array<String | Regexp>`
 
 A list of paths to be excluded from the crawling.
 
@@ -275,7 +275,7 @@ A list of paths to be excluded from the crawling.
 * Arguments: [`String`, `block`]
 * Multiple: yes
 
-Execute the given code when accessing the given path before capturing the screenshot.  
+Execute the given code when accessing the given path before capturing the screenshot.
 The given block will be executed inside a [`Capybara::Session`][capybara_session],
 so you can use any of the methods it defines.
 </div>
@@ -294,7 +294,7 @@ task(:admin) {
     fill_in 'password', with: 'birthday'
     click_button 'Submit'
   }
-  exclude_paths ['/about']
+  exclude_paths ['/about', /.*#.*/]
 }
 ```
 
