@@ -19,23 +19,19 @@ Eyecatch includes following languages:
 
   Ruby version are managed with `rbenv`. Default version is 2.3.0.
 
-  -  2.1.8
-  -  2.2.3
-  -  2.2.4
-  -  **2.3.0**
+  -  2.1.9
+  -  2.2.5
+  -  **2.3.1**
 
 
 - Node.js
 
   Node.js versions are managed with `ndenv`. Default version is 4.4.3.
 
-  - v4.2.6
-  - v4.3.0
-  - **v4.4.3**
-  - v5.5.0
-  - v5.6.0
-  - v5.7.0
-  - v6.0.0
+  - v4.3.2
+  - **v4.4.7**
+  - v5.12.0
+  - v6.3.1
 
   If you want to use npm packages as a command line tool, something like bower or grunt CLI, then you need to install it globally with `-g` option and run `ndenv rehash` after install.
 
@@ -44,20 +40,15 @@ Eyecatch includes following languages:
 
   Python versions are managed with `pyenv`. Default version is 3.5.1.
 
-  - 2.7.10
-  - 2.7.11
-  - 3.3.6
-  - 3.4.3
-  - 3.4.4
-  - 3.5.0
-  - **3.5.1**
+  - 2.7.12
+  - 3.4.5
+  - **3.5.2**
 
 
 - PHP
 
   PHP versions are managed with `phpenv`. Default version is 5.6.17.
 
-  - 5.6.17
-  - **5.6.18**
-  - 7.0.2
-  - 7.0.3
+  - 5.5.38
+  - **5.6.24**
+  - 7.0.9
