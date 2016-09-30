@@ -18,7 +18,7 @@ Eyecatch and its creator is now a part of the Mitou (未踏: "No one has been en
 
 -----
 
-### Sorapixels & Co.
+### Sorapixels Inc.
 
 #### A tech company based in Tokyo
 We build services for web and mobile developers.

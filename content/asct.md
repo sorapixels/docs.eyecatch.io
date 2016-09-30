@@ -8,7 +8,7 @@ The Act on Specified Commercial Transactions
 =====
 
 #### Seller
-Sorapixels & Co.
+Sorapixels Inc.
 
 #### Operating Officer
 Takao Naito
