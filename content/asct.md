@@ -14,8 +14,8 @@ Sorapixels Inc.
 Takao Naito
 
 #### Address
-Acropolis Ayase 6F<br>
-4-21-3 Ayase Adachi Tokyo JAPAN, 120-0005<br>
+1000-11 Suenokuchi, Kamigyo<br>
+Kyoto JAPAN, 602-8382<br>
 
 #### Contact
 Tel: +81-80-9983-3967<br>
