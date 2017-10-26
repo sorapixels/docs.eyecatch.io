@@ -18,18 +18,16 @@ Eyecatch and its creator is now a part of the Mitou (未踏: "No one has been en
 
 -----
 
-### Sorapixels Inc.
-
-#### A tech company based in Tokyo
+### Sorapixels, Inc.
 We build services for web and mobile developers.
 
 ##### CEO
 Takao Naito
 
+##### Address
+2035 Sunset Lake RoadSuite B-2, Newark DE 19702
+
 ##### Contact
-Tel: +81-80-9983-3967<br>
 Email: <info@sorapixels.com>
 
-##### Office
-Acropolis Ayase 6F<br>
-4-21-3 Ayase Adachi Tokyo JAPAN, 120-0005
+
