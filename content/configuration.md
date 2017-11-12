@@ -209,6 +209,8 @@ env 'DATABASE_URL=postgres://postgres@localhost/app_test'
 * `RAILS_ENV=test`
 * `RACK_ENV=test`
 
+Some other environment variables are for Eyecatch renderer internal use, so please do not modify or remove them. They also should not be used in your build commands.
+
 ### `before_build`
 
 * Argument: `block`
