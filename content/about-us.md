@@ -25,7 +25,7 @@ We build services for web and mobile developers.
 Takao Naito
 
 ##### Address
-2035 Sunset Lake RoadSuite B-2, Newark DE 19702
+2035 Sunset Lake RoadSuite B-2, Newark DE 19702 USA
 
 ##### Contact
 Email: <info@sorapixels.com>
